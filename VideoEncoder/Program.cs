@@ -3,7 +3,7 @@
 using VideoEncoder;
 
 Video video = new Video() { Title = "dockerDemo.mp4"};
-VideoProcessor processor = new VideoProcessor();
+VideoProcessor processor = new VideoProcessor(video);
 EmailService emailService = new(processor);
 SmsService smsService = new(processor);
 
@@ -12,4 +12,6 @@ SmsService smsService = new(processor);
 //subscribing to an event 
 processor.VideoEncoded += emailService.OnVideoEncoded;
 processor.VideoEncoded += smsService.OnVideoEncoded;
+
+processor.ProcessVideo();
 

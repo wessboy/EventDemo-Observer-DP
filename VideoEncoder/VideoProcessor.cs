@@ -10,13 +10,13 @@ namespace VideoEncoder
     
      public class VideoProcessor
     {
-        private Video videoObject;
+        private Video _video;
 
         protected EventHandlerList listEventDelegates = new EventHandlerList();
 
-        public VideoProcessor()
+        public VideoProcessor(Video video)
         {
-            
+            _video = video;
         }
 
         #region event pblishers
@@ -99,8 +99,8 @@ namespace VideoEncoder
 
         public void ProcessVideo()
         {
-            this.EncodeVideo(videoObject);
-            this.CompressVideo(videoObject);
+            this.EncodeVideo(_video);
+            this.CompressVideo(_video);
         }
 
 
